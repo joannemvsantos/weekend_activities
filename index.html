@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Weekend Ideas 🌿</title>
+<style>
+  :root{
+    --bg1:#eef6f1;
+    --bg2:#fdf6ec;
+    --ink:#2f3b33;
+    --ink-soft:#5c6b60;
+    --card:#ffffff;
+    --accent:#3f7d5c;
+    --accent-soft:#e4f2e8;
+    --gold:#d9a441;
+    --gold-soft:#faf0d9;
+    --rose:#c97b7b;
+    --rose-soft:#f7e6e6;
+    --sky:#4d84a8;
+    --sky-soft:#e3eef5;
+    --border:#e4e1d8;
+    --shadow: 0 6px 20px rgba(47,59,51,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+    color: var(--ink);
+    min-height:100vh;
+  }
+  .wrap{ max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  header.hero{
+    text-align:center;
+    padding: 20px 10px 36px;
+  }
+  header.hero .kicker{
+    display:inline-block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  header.hero h1{
+    font-size: clamp(28px, 5vw, 44px);
+    margin: 0 0 10px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  header.hero p{
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height:1.5;
+  }
+  .crew{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .crew span{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+  }
+
+  /* Featured weekend card */
+  .featured{
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 28px 30px;
+    margin: 10px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:6px;
+    background: linear-gradient(90deg, var(--accent), var(--gold), var(--rose), var(--sky));
+  }
+  .featured h2{
+    margin: 6px 0 4px;
+    font-size: 20px;
+  }
+  .featured .sub{
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .featured-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .pick{
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .pick .name{ font-weight:600; margin-bottom:4px; }
+  .pick .why{ font-size: 13px; color: var(--ink-soft); line-height:1.4; }
+  .warn{
+    margin-top:18px;
+    font-size: 13px;
+    color: var(--rose);
+    background: var(--rose-soft);
+    border-radius: 12px;
+    padding: 10px 14px;
+    line-height:1.5;
+  }
+
+  /* Controls */
+  .controls{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items:center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .tabs{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tab{
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink-soft);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor:pointer;
+    transition: all .15s ease;
+  }
+  .tab:hover{ border-color: var(--accent); color: var(--accent); }
+  .tab.active{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight:600;
+  }
+  .search{
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    min-width: 200px;
+    color: var(--ink);
+  }
+  .search:focus{ outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+
+  .progress-wrap{
+    display:flex; align-items:center; gap:10px;
+    font-size: 13px; color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .progress-bar{
+    flex:1; height: 8px; border-radius:999px;
+    background: var(--border); overflow:hidden;
+  }
+  .progress-bar > div{
+    height:100%; background: linear-gradient(90deg, var(--accent), var(--gold));
+    width:0%; transition: width .3s ease;
+  }
+
+  /* Grid of cards */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+  }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .card:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(47,59,51,0.12); }
+  .card.done{ opacity: 0.55; }
+  .card.done .name{ text-decoration: line-through; }
+  .card-top{ display:flex; align-items:flex-start; gap:10px; }
+  .check{
+    flex-shrink:0;
+    width: 22px; height:22px;
+    border-radius: 7px;
+    border: 2px solid var(--accent);
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    color: #fff;
+    font-size: 14px;
+    margin-top:2px;
+    background: transparent;
+  }
+  .check.checked{ background: var(--accent); }
+  .name{ font-weight: 600; font-size: 15px; line-height:1.3; }
+  .note{ font-size: 12.5px; color: var(--ink-soft); line-height:1.4; }
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+  .tag{
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing:.2px;
+  }
+  .tag.dog{ background: var(--gold-soft); color:#8a6a1c; }
+  .tag.virike{ background: var(--sky-soft); color:#2f5b76; }
+  .tag.repeat{ background: var(--rose-soft); color:#93413f; }
+  .tag.winter{ background:#e7e9fb; color:#494d92; }
+  .tag.indoor{ background:#eee; color:#666; }
+  .tag.outdoor{ background: var(--accent-soft); color: var(--accent); }
+
+  .section-title{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ink-soft);
+    margin: 34px 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-title::after{
+    content:""; flex:1; height:1px; background: var(--border);
+  }
+
+  footer{
+    text-align:center;
+    margin-top: 60px;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    line-height:1.6;
+  }
+
+  .empty{
+    text-align:center;
+    padding: 40px 20px;
+    color: var(--ink-soft);
+    font-size:14px;
+  }
+
+  @media (max-width: 560px){
+    .controls{ flex-direction:column; align-items:stretch; }
+    .search{ width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">Weekend Brainstorm</span>
+    <h1>Our Weekend Ideas 🌿</h1>
+    <p>A living list of things we want to do together — filtered for right now, and saved up for later. Tap a box to check something off.</p>
+    <div class="crew">
+      <span>🤰 Pregnancy-friendly</span>
+      <span>🐾 Bjarne-approved</span>
+      <span>☀️ Oulu, summer 2026</span>
+    </div>
+  </header>
+
+  <section class="featured">
+    <h2>This weekend's picks — Jul 25–26, 2026</h2>
+    <div class="sub">Low-key, heat-aware for Bjarne's coat, no alcohol/sauna for pregnancy. Mornings or evenings beat midday sun.</div>
+    <div class="featured-grid">
+      <div class="pick">
+        <div class="name">🏖️ Nallikari beach walk</div>
+        <div class="why">Blue Flag 2026 beach — shallow water for Bjarne to cool off, easy flat walk, café on site.</div>
+      </div>
+      <div class="pick">
+        <div class="name">🔥 Forest picnic & grilling</div>
+        <div class="why">Marinated meat over a campfire, shade, low intensity, Bjarne can roam on a long lead.</div>
+      </div>
+      <div class="pick">
+        <div class="name">🗺️ Geocaching</div>
+        <div class="why">Easy-pace treasure hunt outdoors — new activity, fun for all three of us.</div>
+      </div>
+      <div class="pick">
+        <div class="name">🎟️ Virike date night</div>
+        <div class="why">Elokuvateatteri Star or Oulun kiipeilykeskus — Virike-eligible, human-only evening.</div>
+      </div>
+    </div>
+    <div class="warn">⚠️ Skipping Qstock Festival &amp; the Rita Ora concert this weekend — loud, crowded, alcohol-heavy, and dogs won't be welcome on festival grounds.</div>
+  </section>
+
+  <div class="controls">
+    <div class="tabs" id="tabs"></div>
+    <input class="search" id="search" type="text" placeholder="Search ideas…">
+  </div>
+
+  <div class="progress-wrap">
+    <span id="progressLabel">0 of 0 done</span>
+    <div class="progress-bar"><div id="progressFill"></div></div>
+  </div>
+
+  <div id="content"></div>
+
+  <footer>
+    Sourced from our old "Minä olen velho" dating list + Edenred Virike / Menox / web research, last updated 2026-07-24.<br>
+    Check-offs are saved in this browser only — they won't sync between devices.
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  // Do now — pregnancy + Bjarne friendly (summer 2026)
+  {name:"Nallikari beach walk", cat:"now", tags:["outdoor","dog"], note:"Blue Flag 2026, shallow water to cool Bjarne off, café on site."},
+  {name:"Picnic", cat:"now", tags:["outdoor","dog"], note:"Easy, low-intensity, bring a blanket."},
+  {name:"Grilling marinated meat in the forest", cat:"now", tags:["outdoor","dog"], note:"Campfire grilling, relaxed pace."},
+  {name:"Geocaching", cat:"now", tags:["outdoor","dog"], note:"First time — easy-pace treasure hunt with Bjarne."},
+  {name:"Frisbee", cat:"now", tags:["outdoor","dog"]},
+  {name:"Minigolf", cat:"now", tags:["outdoor"]},
+  {name:"Discgolf", cat:"now", tags:["outdoor","repeat"], note:"Easy pace."},
+  {name:"Swimming", cat:"now", tags:["outdoor","repeat"], note:"Low intensity."},
+  {name:"Light hiking", cat:"now", tags:["outdoor","dog","repeat"]},
+  {name:"Jigsaw puzzle", cat:"now", tags:["indoor"], note:"Cozy night in."},
+  {name:"Charades", cat:"now", tags:["indoor"]},
+  {name:"Museums", cat:"now", tags:["indoor"], note:"Check dog policy — may need to split up."},
+  {name:"Oulu Tori / farmers market", cat:"now", tags:["outdoor","dog"], note:"Browse + ice cream."},
+  {name:"Hupisaari kesäteatteri", cat:"now", tags:["outdoor"], note:"Summer theatre, park setting, sit-down show."},
+  {name:"Eat at a restaurant", cat:"now", tags:["indoor","virike"]},
+  {name:"Movie at Elokuvateatteri Star", cat:"now", tags:["indoor","virike"], note:"Human-only night."},
+  {name:"Picture at the same spot every year", cat:"now", tags:["outdoor"], note:"Start the tradition now — pregnant belly photo #1."},
+
+  // Save for later
+  {name:"Suunnistus (orienteering)", cat:"later", tags:["outdoor"]},
+  {name:"Paddle boarding", cat:"later", tags:["outdoor"]},
+  {name:"Go kart", cat:"later", tags:["indoor"]},
+  {name:"Arcade", cat:"later", tags:["indoor"]},
+  {name:"Bungee jumping", cat:"later", tags:["outdoor"]},
+  {name:"Learn guitar", cat:"later", tags:["indoor"]},
+  {name:"Learn dance", cat:"later", tags:["indoor"]},
+  {name:"Painting", cat:"later", tags:["indoor"]},
+  {name:"Float Oulu", cat:"later", tags:["indoor"]},
+  {name:"Volleyball", cat:"later", tags:["outdoor"]},
+  {name:"Drive-in theater", cat:"later", tags:["outdoor"]},
+  {name:"Batting cage", cat:"later", tags:["outdoor"]},
+  {name:"Massage", cat:"later", tags:["indoor"], note:"Pregnancy-safe only — double check what Virike covers."},
+  {name:"Basketball", cat:"later", tags:["outdoor"]},
+  {name:"Aurora borealis", cat:"later", tags:["outdoor","winter"]},
+  {name:"Learn to shoot guns", cat:"later", tags:["outdoor"]},
+  {name:"Exit Oulu (escape room)", cat:"later", tags:["indoor","virike"], note:"Uusikatu location."},
+  {name:"Superpark Oulu", cat:"later", tags:["indoor"]},
+  {name:"Dog agility", cat:"later", tags:["outdoor","dog"]},
+  {name:"Skiing", cat:"later", tags:["outdoor","winter"]},
+  {name:"Snowboarding", cat:"later", tags:["outdoor","winter"]},
+  {name:"Ice skating", cat:"later", tags:["outdoor","winter"]},
+  {name:"Outdoor jacuzzi", cat:"later", tags:["outdoor","winter"], note:"No sauna/hot tub while pregnant."},
+  {name:"Lift-sledding", cat:"later", tags:["outdoor","winter"]},
+  {name:"Climbing", cat:"later", tags:["indoor","virike","repeat"], note:"Oulun kiipeilykeskus."},
+  {name:"Roller blades", cat:"later", tags:["outdoor","repeat"]},
+  {name:"Cosplay", cat:"later", tags:["indoor","repeat"]},
+  {name:"Self defense", cat:"later", tags:["indoor","repeat"]},
+  {name:"Sledding", cat:"later", tags:["outdoor","winter","repeat"]},
+  {name:"Bowling", cat:"later", tags:["indoor","virike"], note:"Oulun keilahalli."},
+  {name:"Billiards", cat:"later", tags:["indoor","virike"], note:"City Biljard."},
+
+  // Milestones (post-birth)
+  {name:"Kids' first summer breakfast outside", cat:"milestone", tags:["outdoor"]},
+  {name:"Measure height", cat:"milestone", tags:["indoor"], note:"Yearly, once baby is standing."},
+  {name:"Birthday letter", cat:"milestone", tags:["indoor"], note:"Yearly."},
+  {name:"First day of school interview", cat:"milestone", tags:["indoor"]},
+];
+
+const TABS = [
+  {key:"all", label:"All"},
+  {key:"now", label:"Do Now"},
+  {key:"later", label:"Save for Later"},
+  {key:"milestone", label:"Milestones"},
+];
+
+const TAG_LABEL = {
+  dog: "🐾 Bjarne", virike: "🎟️ Virike", repeat: "💛 Wanna repeat",
+  winter: "❄️ Winter", indoor: "🏠 Indoor", outdoor: "🌳 Outdoor"
+};
+
+let state = { tab: "all", query: "" };
+let done = JSON.parse(localStorage.getItem("weekendIdeasDone") || "{}");
+
+function slug(name){ return name.toLowerCase().replace(/[^a-z0-9]+/g,"-"); }
+
+function renderTabs(){
+  const el = document.getElementById("tabs");
+  el.innerHTML = "";
+  TABS.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "tab" + (state.tab === t.key ? " active" : "");
+    b.textContent = t.label;
+    b.onclick = () => { state.tab = t.key; render(); };
+    el.appendChild(b);
+  });
+}
+
+function matches(item){
+  if (state.tab !== "all" && item.cat !== state.tab) return false;
+  if (state.query && !item.name.toLowerCase().includes(state.query.toLowerCase())) return false;
+  return true;
+}
+
+function groupLabel(cat){
+  return {now:"Do Now — pregnancy + Bjarne friendly", later:"Save for Later", milestone:"Milestones (post-birth)"}[cat];
+}
+
+function render(){
+  renderTabs();
+  const content = document.getElementById("content");
+  content.innerHTML = "";
+  const filtered = DATA.filter(matches);
+
+  if (filtered.length === 0){
+    content.innerHTML = '<div class="empty">Nothing matches — try another search or tab.</div>';
+  } else if (state.tab === "all"){
+    ["now","later","milestone"].forEach(cat => {
+      const items = filtered.filter(i => i.cat === cat);
+      if (!items.length) return;
+      const h = document.createElement("div");
+      h.className = "section-title";
+      h.textContent = groupLabel(cat);
+      content.appendChild(h);
+      content.appendChild(buildGrid(items));
+    });
+  } else {
+    content.appendChild(buildGrid(filtered));
+  }
+
+  const total = DATA.length;
+  const doneCount = Object.values(done).filter(Boolean).length;
+  document.getElementById("progressLabel").textContent = `${doneCount} of ${total} done`;
+  document.getElementById("progressFill").style.width = total ? `${(doneCount/total)*100}%` : "0%";
+}
+
+function buildGrid(items){
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  items.forEach(item => {
+    const id = slug(item.name);
+    const isDone = !!done[id];
+    const card = document.createElement("div");
+    card.className = "card" + (isDone ? " done" : "");
+
+    const top = document.createElement("div");
+    top.className = "card-top";
+
+    const check = document.createElement("div");
+    check.className = "check" + (isDone ? " checked" : "");
+    check.textContent = isDone ? "✓" : "";
+    check.onclick = () => {
+      done[id] = !done[id];
+      localStorage.setItem("weekendIdeasDone", JSON.stringify(done));
+      render();
+    };
+
+    const nameWrap = document.createElement("div");
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = item.name;
+    nameWrap.appendChild(name);
+    if (item.note){
+      const note = document.createElement("div");
+      note.className = "note";
+      note.textContent = item.note;
+      nameWrap.appendChild(note);
+    }
+
+    top.appendChild(check);
+    top.appendChild(nameWrap);
+    card.appendChild(top);
+
+    const tags = document.createElement("div");
+    tags.className = "tags";
+    item.tags.forEach(t => {
+      const tag = document.createElement("span");
+      tag.className = "tag " + t;
+      tag.textContent = TAG_LABEL[t] || t;
+      tags.appendChild(tag);
+    });
+    card.appendChild(tags);
+
+    grid.appendChild(card);
+  });
+  return grid;
+}
+
+document.getElementById("search").addEventListener("input", (e) => {
+  state.query = e.target.value;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
