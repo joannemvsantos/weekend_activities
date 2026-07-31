@@ -255,6 +255,21 @@
     font-size:14px;
   }
 
+  .sync-status{
+    font-size: 12px;
+    color: var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:5px;
+    white-space: nowrap;
+  }
+  .sync-dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--gold);
+    display:inline-block;
+  }
+  .sync-dot.live{ background: var(--accent); }
+
   @media (max-width: 560px){
     .controls{ flex-direction:column; align-items:stretch; }
     .search{ width:100%; }
@@ -307,17 +322,34 @@
   <div class="progress-wrap">
     <span id="progressLabel">0 of 0 done</span>
     <div class="progress-bar"><div id="progressFill"></div></div>
+    <span class="sync-status" id="syncStatus"><span class="sync-dot" id="syncDot"></span><span id="syncText">Connecting…</span></span>
   </div>
 
   <div id="content"></div>
 
   <footer>
     Sourced from our old "Minä olen velho" dating list + Edenred Virike / Menox / web research, last updated 2026-07-24.<br>
-    Check-offs are saved in this browser only — they won't sync between devices.
+    Check-offs sync live across devices via Firebase — check something off on your phone and it updates on your husband's too.
   </footer>
 </div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA18sh2X-n61bGdjNJX10u_0l-2t92KOoY",
+  authDomain: "weekend-activities-dashboard.firebaseapp.com",
+  databaseURL: "https://weekend-activities-dashboard-default-rtdb.firebaseio.com",
+  projectId: "weekend-activities-dashboard",
+  storageBucket: "weekend-activities-dashboard.firebasestorage.app",
+  messagingSenderId: "290763517652",
+  appId: "1:290763517652:web:39848ca7ec998393fd9541"
+};
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getDatabase(firebaseApp);
+const checkoffsRef = ref(db, "checkoffs");
+
 const DATA = [
   // Do now — pregnancy + Bjarne friendly (summer 2026)
   {name:"Nallikari beach walk", cat:"now", tags:["outdoor","dog"], note:"Blue Flag 2026, shallow water to cool Bjarne off, café on site."},
@@ -391,6 +423,8 @@ const TAG_LABEL = {
 };
 
 let state = { tab: "all", query: "" };
+// Start from the local cache so the page isn't blank while Firebase connects,
+// then the onValue listener below takes over as the source of truth for real-time sync.
 let done = JSON.parse(localStorage.getItem("weekendIdeasDone") || "{}");
 
 function slug(name){ return name.toLowerCase().replace(/[^a-z0-9]+/g,"-"); }
@@ -461,9 +495,14 @@ function buildGrid(items){
     check.className = "check" + (isDone ? " checked" : "");
     check.textContent = isDone ? "✓" : "";
     check.onclick = () => {
-      done[id] = !done[id];
+      const newVal = !isDone;
+      // Optimistic local update so the UI feels instant...
+      done[id] = newVal;
       localStorage.setItem("weekendIdeasDone", JSON.stringify(done));
       render();
+      // ...then write to Firebase; the onValue listener will echo this back
+      // (to this tab and to any other open device) and reconcile if needed.
+      set(ref(db, "checkoffs/" + id), newVal);
     };
 
     const nameWrap = document.createElement("div");
@@ -502,7 +541,25 @@ document.getElementById("search").addEventListener("input", (e) => {
   render();
 });
 
+// Initial render straight from the localStorage cache, so there's no blank flash
+// while we wait for Firebase to connect.
 render();
+
+// Live sync: fires immediately with whatever's in Firebase right now, then again
+// every time either device writes a change — this is what makes check-offs show
+// up on your husband's phone without a manual refresh.
+const syncDot = document.getElementById("syncDot");
+const syncText = document.getElementById("syncText");
+onValue(checkoffsRef, (snapshot) => {
+  done = snapshot.val() || {};
+  localStorage.setItem("weekendIdeasDone", JSON.stringify(done));
+  syncDot.classList.add("live");
+  syncText.textContent = "Synced";
+  render();
+}, (error) => {
+  console.error("Firebase sync error:", error);
+  syncText.textContent = "Offline (local only)";
+});
 </script>
 </body>
 </html>
