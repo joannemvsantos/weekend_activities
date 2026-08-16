@@ -124,6 +124,8 @@
     padding: 10px 14px;
     line-height:1.5;
   }
+  .menox-section .warn{ margin-top:0; margin-bottom:14px; }
+  .menox-section .empty{ padding: 10px 0; text-align:left; }
 
   /* Controls */
   .controls{
@@ -312,6 +314,13 @@
       </div>
     </div>
     <div class="warn">⚠️ Skipping Qstock Festival &amp; the Rita Ora concert this weekend — loud, crowded, alcohol-heavy, and dogs won't be welcome on festival grounds.</div>
+  </section>
+
+  <section class="featured menox-section">
+    <h2>This week in Oulu</h2>
+    <div class="sub">Auto-updated from Menox event listings — unfiltered, not vetted for pregnancy/dog-friendliness like the picks above. Just for browsing.</div>
+    <div class="warn" id="menoxStaleBanner" style="display:none;"></div>
+    <div class="featured-grid" id="menoxGrid"></div>
   </section>
 
   <div class="controls">
@@ -544,6 +553,92 @@ document.getElementById("search").addEventListener("input", (e) => {
 // Initial render straight from the localStorage cache, so there's no blank flash
 // while we wait for Firebase to connect.
 render();
+
+const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Menox events are fetched out-of-band by .github/workflows/refresh-menox.yml
+// (scripts/fetch-menox.js) and committed to data/menox.json — this just reads
+// that cached file and flags it if it's gone stale, per JOA-306.
+async function loadMenoxEvents(){
+  const banner = document.getElementById("menoxStaleBanner");
+  try {
+    const res = await fetch("data/menox.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const { fetchedAt, events } = await res.json();
+    const stale = !fetchedAt || (Date.now() - new Date(fetchedAt).getTime() > ONE_WEEK_MS);
+    if (stale){
+      banner.style.display = "block";
+      banner.textContent = fetchedAt
+        ? `⚠️ Menox events haven't refreshed since ${new Date(fetchedAt).toLocaleDateString()} — showing last known listings.`
+        : "⚠️ Menox events have no fetch timestamp — showing last known listings.";
+    } else {
+      banner.style.display = "none";
+    }
+    renderMenoxEvents(events || []);
+  } catch (err) {
+    console.error("Menox load error:", err);
+    banner.style.display = "block";
+    banner.textContent = "⚠️ Couldn't load Menox events right now.";
+    renderMenoxEvents([]);
+  }
+}
+
+function renderMenoxEvents(events){
+  const grid = document.getElementById("menoxGrid");
+  grid.innerHTML = "";
+  if (!events.length){
+    grid.innerHTML = '<div class="empty">No upcoming Oulu events found.</div>';
+    return;
+  }
+  events.slice(0, 8).forEach(e => {
+    const card = document.createElement("div");
+    card.className = "pick";
+
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = e.title || "Untitled event";
+    card.appendChild(name);
+
+    const dateStr = e.startDate ? new Date(e.startDate).toLocaleDateString("en-GB", {day:"numeric", month:"short"}) : "";
+    const timeStr = e.startTime ? e.startTime.slice(0,5) : "";
+    const parts = [dateStr, timeStr, e.location, e.isFree ? "Free" : ""].filter(Boolean);
+    const why = document.createElement("div");
+    why.className = "why";
+    why.textContent = parts.join(" · ");
+    card.appendChild(why);
+
+    grid.appendChild(card);
+  });
+}
+
+// Edenred Virike merchants are fetched out-of-band by
+// .github/workflows/refresh-edenred.yml (scripts/fetch-edenred.js) and
+// committed to data/edenred.json. Surfaced under "Save for Later" (not "Do
+// Now") since these are auto-imported and haven't had the pregnancy/dog
+// safety review the "Do Now" section implies.
+async function loadEdenredVirike(){
+  try {
+    const res = await fetch("data/edenred.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const { merchants } = await res.json();
+    (merchants || []).slice(0, 12).forEach(m => {
+      if (!m.name) return;
+      const details = [(m.categories || []).slice(0, 2).join(", "), m.address, m.city].filter(Boolean).join(" — ");
+      DATA.push({
+        name: `Visit ${m.name}`,
+        cat: "later",
+        tags: ["virike"],
+        note: details || "Virike-eligible merchant."
+      });
+    });
+    render();
+  } catch (err) {
+    console.error("Edenred load error:", err);
+  }
+}
+
+loadMenoxEvents();
+loadEdenredVirike();
 
 // Live sync: fires immediately with whatever's in Firebase right now, then again
 // every time either device writes a change — this is what makes check-offs show

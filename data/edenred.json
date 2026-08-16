@@ -1,0 +1,421 @@
+{
+  "source": "edenred",
+  "filter": "virike",
+  "city": "Oulu",
+  "fetchedAt": "2026-08-14T08:54:43Z",
+  "merchants": [
+    {
+      "id": "fcd8ee69-73f6-4b11-b142-9a1ba8003f3f",
+      "name": "Rakkaudella Kaisa",
+      "type": "culture",
+      "categories": [
+        "Crafting"
+      ],
+      "address": "Pohjoiskaari 12",
+      "city": "Helsinki",
+      "postcode": "00200",
+      "website": "",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "80ae2a1b-6b4a-4538-801f-87d35e62df9b",
+      "name": "Shakta Joogakoulu - Oulu",
+      "type": "sport",
+      "categories": [
+        "Yoga",
+        "Group Exercise "
+      ],
+      "address": "ei osoitetta",
+      "city": "OULU",
+      "postcode": "00000",
+      "website": "https://shakta.fi/oulu/",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "50dbf426-f563-4caf-b5d3-90c54e34ff4c",
+      "name": "Oulun Voimisteluseura",
+      "type": "sport",
+      "categories": [
+        "Group Exercise ",
+        "Dancing",
+        "Sports Club"
+      ],
+      "address": "Oulu",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.ovos.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "d3832a62-db6a-4414-aae4-0df141f7a6ad",
+      "name": "Jump.Dance.Breathe",
+      "type": "sport",
+      "categories": [
+        "Group Exercise "
+      ],
+      "address": "oulu",
+      "city": "oulu",
+      "postcode": "90110",
+      "website": "https://www.instagram.com/jump.dance.breathe/?__d=dist",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "1b3aac6b-ff6c-4f8b-ab3e-1776c50f9342",
+      "name": "Fightermoves liikuntapalvelut Oy",
+      "type": "sport",
+      "categories": [
+        "Martial Arts",
+        "Group Exercise ",
+        "Boxing",
+        "Personal Training",
+        "Other",
+        "Kickboxing"
+      ],
+      "address": "useita toimipisteitä",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.fightermoves.com",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "67cf3410-63c0-46aa-9f96-38296ba34afa",
+      "name": "Tmi J-P Savolampi",
+      "type": "sport",
+      "categories": [
+        "Other"
+      ],
+      "address": "Oulu",
+      "city": "Oulu",
+      "postcode": "00000",
+      "website": "https://www.facebook.com/GolfproJP",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "d55b3b5b-cb46-4d1e-8ce1-cb6d18222ea2",
+      "name": "Huippumoodi Oy",
+      "type": "sport",
+      "categories": [
+        "Other"
+      ],
+      "address": "Salmelantie 7 A 44",
+      "city": "Oulu",
+      "postcode": "90130",
+      "website": "http://www.huippumoodi.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "b4983471-b359-4a17-bc53-d2311fe0e949",
+      "name": "Liikuntakeskus Olo",
+      "type": "sport",
+      "categories": [
+        "Gym",
+        "Yoga",
+        "Spinning",
+        "Group Exercise ",
+        "Dancing",
+        "Personal Training",
+        "Pilates",
+        "Kettlebell"
+      ],
+      "address": "Aleksanterinkatu 25",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.olo.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "9ccbc901-fa28-49a3-845f-6641098a4222",
+      "name": "Alexander Health Club",
+      "type": "sport",
+      "categories": [
+        "Gym"
+      ],
+      "address": "Aleksanterinkatu 21",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.alexanderhealthclub.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "9abcf7b3-4840-4b26-a249-76c0c13e2084",
+      "name": "Uimakoulu Polskis",
+      "type": "sport",
+      "categories": [
+        "Water Sports",
+        "Swimming"
+      ],
+      "address": "Oulun seutu /Pohjois-Pohjanmaa",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://polskis.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "3d3683f7-374c-4e5d-b570-50a8d3384b91",
+      "name": "AC Oulu Oy",
+      "type": "sport-and-culture",
+      "categories": [
+        "Sports Club"
+      ],
+      "address": "Torikatu 28",
+      "city": "OULU",
+      "postcode": "90100",
+      "website": null,
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "6809cfba-9edc-4554-8bd2-8f04f87b8944",
+      "name": "Mehiläinen Oulu /liikunta",
+      "type": "sport",
+      "categories": [
+        "Group Exercise ",
+        "Personal Training"
+      ],
+      "address": "Kauppurienkatu 8 B 3. krs",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "https://www.mehilainen.fi/toimipisteet/fysios-mehilainen-oulu-keskusta-kauppurienkatu-b-krs",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "eec598a6-a285-4c04-8c50-0f9809f7533d",
+      "name": "HAHAHA Dance School",
+      "type": "sport-and-culture",
+      "categories": [
+        "Dancing"
+      ],
+      "address": "Torikatu",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.hahahadanceschool.com",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "14be30d6-5834-4159-9000-bb8ddfa9ec53",
+      "name": "Space Bowling",
+      "type": "sport",
+      "categories": [
+        "Bowling "
+      ],
+      "address": "Torikatu 15-17",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://spacebowling.fi/oulu",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "119f67bd-875d-4e6c-b0f8-426cd0d082a2",
+      "name": "Finnkino Plaza",
+      "type": "culture",
+      "categories": [
+        "Movies"
+      ],
+      "address": "TORIKATU 32",
+      "city": "OULU",
+      "postcode": "90100",
+      "website": null,
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": false
+    },
+    {
+      "id": "32980bf5-da2b-47c6-a1a9-3ef25f499146",
+      "name": "Oulun Torisauna",
+      "type": "sport",
+      "categories": [
+        "Winter Sports",
+        "Water Sports",
+        "Outdoor activities"
+      ],
+      "address": "Oulun Kauppatori",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.ouluntorisauna.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "d2d6dd38-a9a2-465f-a29e-f337c38ac510",
+      "name": "Arctic Glow Minigolf Oulu",
+      "type": "sport",
+      "categories": [
+        "Golf"
+      ],
+      "address": "Torikatu 15-17",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "https://www.arcticglowminigolf.com/minigolf-oulu",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "8bf2ddbf-8872-4da1-bdad-ad5d7adfddcf",
+      "name": "Paja 1605",
+      "type": "culture",
+      "categories": [
+        "Crafting",
+        "Courses "
+      ],
+      "address": "Aittatori 10",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "https://www.paja1605.fi/",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "0ef5e852-acb3-4851-90aa-f8a2217d2f6f",
+      "name": "Hukka Xpress Rotuaari",
+      "type": "sport",
+      "categories": [
+        "Gym",
+        "Personal Training"
+      ],
+      "address": "Kauppurienkatu 12",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.hukkaxpress.net",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "3850423e-6853-4eb9-a7bf-fa01b01c7567",
+      "name": "VR Heaven - Virtuaalitodellisuustaivas",
+      "type": "sport-and-culture",
+      "categories": [
+        "Other",
+        "Other Culture"
+      ],
+      "address": "Pakkahuoneenkatu 9",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "https://www.vrheaven.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "42b7c568-002a-48b9-accd-2cfe09ab2693",
+      "name": "Oulun Shukokai karate",
+      "type": "sport",
+      "categories": [
+        "Martial Arts",
+        "Group Exercise "
+      ],
+      "address": "Sepänkatu 7",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.shukokai.fi/oulu",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "7a381950-b93d-4a44-a5e6-4d932d30043c",
+      "name": "FC Opa Naiset",
+      "type": "sport-and-culture",
+      "categories": [
+        "Events"
+      ],
+      "address": "Kuusiluodonkatu 14",
+      "city": "Oulu",
+      "postcode": "90120",
+      "website": "http://www.fcopa.sporttisaitti.com",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "efcf146d-0a1a-410c-ad40-e41f6be97f4a",
+      "name": "FC OPa miehet",
+      "type": "sport-and-culture",
+      "categories": [
+        "Ball games"
+      ],
+      "address": "Kuusiluodonkatu 14",
+      "city": "Oulu",
+      "postcode": "90120",
+      "website": "http://www.fcopa.sporttisaitti.com",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "82fa685f-4e37-4822-9c09-dae96dbfa53c",
+      "name": "Leijakoulu Lappis",
+      "type": "sport",
+      "categories": [
+        "Other"
+      ],
+      "address": "Kiikelin saari ja Nallikari Oulu",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.lappis.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "860565cd-310b-4aed-a043-8b6fb3076b66",
+      "name": "Oulun kaupunginteatteri",
+      "type": "culture",
+      "categories": [
+        "Theatre "
+      ],
+      "address": "Kaarlenväylä 2",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": null,
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "3fe40c9d-40a2-4ba4-a21a-7d07fac965ec",
+      "name": "Oulu Triathlon & Cycling ry",
+      "type": "sport",
+      "categories": [
+        "Sports Events "
+      ],
+      "address": "Kirkkokatu 15",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://otcoulu.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
+      "acceptsMobile": true
+    }
+  ]
+}

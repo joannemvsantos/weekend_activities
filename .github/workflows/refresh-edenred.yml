@@ -1,0 +1,25 @@
+name: Refresh Edenred Virike merchants
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 06:00 UTC on the 1st of every month
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: python3 scripts/fetch-edenred.py > data/edenred.json
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/edenred.json
+          git diff --staged --quiet && echo "No changes" || git commit -m "Refresh Edenred Virike merchants"
+          git push
