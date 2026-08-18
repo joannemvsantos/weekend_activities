@@ -126,6 +126,7 @@
   }
   .menox-section .warn{ margin-top:0; margin-bottom:14px; }
   .menox-section .empty{ padding: 10px 0; text-align:left; }
+  #weekendStaleBanner{ margin-top:0; margin-bottom:14px; }
 
   /* Controls */
   .controls{
@@ -292,9 +293,10 @@
     </div>
   </header>
 
-  <section class="featured">
-    <h2>This weekend's picks — Jul 25–26, 2026</h2>
+  <section class="featured" id="weekendPicks" data-weekend-start="2026-08-22" data-weekend-end="2026-08-23">
+    <h2>This weekend's picks — Aug 22–23, 2026</h2>
     <div class="sub">Low-key, heat-aware for Bjarne's coat, no alcohol/sauna for pregnancy. Mornings or evenings beat midday sun.</div>
+    <div class="warn" id="weekendStaleBanner" style="display:none;"></div>
     <div class="featured-grid">
       <div class="pick">
         <div class="name">🏖️ Nallikari beach walk</div>
@@ -313,7 +315,6 @@
         <div class="why">Elokuvateatteri Star or Oulun kiipeilykeskus — Virike-eligible, human-only evening.</div>
       </div>
     </div>
-    <div class="warn">⚠️ Skipping Qstock Festival &amp; the Rita Ora concert this weekend — loud, crowded, alcohol-heavy, and dogs won't be welcome on festival grounds.</div>
   </section>
 
   <section class="featured menox-section">
@@ -553,6 +554,31 @@ document.getElementById("search").addEventListener("input", (e) => {
 // Initial render straight from the localStorage cache, so there's no blank flash
 // while we wait for Firebase to connect.
 render();
+
+// "This weekend's picks" is still hand-written (data-weekend-start/-end on the
+// section), unlike the auto-fetched Menox section below it. Nothing enforces
+// that a human actually updates it every week, so — per JOA-339 — flag it
+// instead of silently showing old picks once the encoded weekend has passed.
+function checkWeekendPicksFreshness(){
+  const section = document.getElementById("weekendPicks");
+  const banner = document.getElementById("weekendStaleBanner");
+  const startStr = section?.dataset.weekendStart;
+  const endStr = section?.dataset.weekendEnd;
+  if (!section || !banner || !startStr || !endStr) return;
+
+  // Stale starting the day after the encoded end date.
+  const staleAt = new Date(endStr + "T00:00:00Z");
+  staleAt.setUTCDate(staleAt.getUTCDate() + 1);
+
+  if (Date.now() >= staleAt.getTime()){
+    const fmt = (d) => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", {day:"numeric", month:"short", year:"numeric"});
+    banner.style.display = "block";
+    banner.textContent = `⚠️ These picks were for ${fmt(startStr)}–${fmt(endStr)} — they haven't been refreshed for the current weekend yet.`;
+  } else {
+    banner.style.display = "none";
+  }
+}
+checkWeekendPicksFreshness();
 
 const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
