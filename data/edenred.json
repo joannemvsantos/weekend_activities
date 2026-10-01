@@ -2,8 +2,27 @@
   "source": "edenred",
   "filter": "virike",
   "city": "Oulu",
-  "fetchedAt": "2026-09-01T10:53:31Z",
+  "fetchedAt": "2026-10-01T12:10:08Z",
   "merchants": [
+    {
+      "id": "6354d00d-c318-414c-ae20-54085452bd8c",
+      "name": "Mankeli Training Club",
+      "type": "sport",
+      "categories": [
+        "Gym",
+        "Group Exercise ",
+        "Boxing",
+        "Personal Training",
+        "Crossfit"
+      ],
+      "address": "Onkkaalantie 69",
+      "city": "Pälkäne",
+      "postcode": "36600",
+      "website": "https://mankelitraining.fi/",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
     {
       "id": "fcd8ee69-73f6-4b11-b142-9a1ba8003f3f",
       "name": "Rakkaudella Kaisa",
@@ -53,41 +72,6 @@
       "acceptsMobile": true
     },
     {
-      "id": "d3832a62-db6a-4414-aae4-0df141f7a6ad",
-      "name": "Jump.Dance.Breathe",
-      "type": "sport",
-      "categories": [
-        "Group Exercise "
-      ],
-      "address": "oulu",
-      "city": "oulu",
-      "postcode": "90110",
-      "website": "https://www.instagram.com/jump.dance.breathe/?__d=dist",
-      "acceptsVoucher": true,
-      "acceptsCard": false,
-      "acceptsMobile": true
-    },
-    {
-      "id": "1b3aac6b-ff6c-4f8b-ab3e-1776c50f9342",
-      "name": "Fightermoves liikuntapalvelut Oy",
-      "type": "sport",
-      "categories": [
-        "Martial Arts",
-        "Group Exercise ",
-        "Boxing",
-        "Personal Training",
-        "Other",
-        "Kickboxing"
-      ],
-      "address": "useita toimipisteitä",
-      "city": "Oulu",
-      "postcode": "90100",
-      "website": "http://www.fightermoves.com",
-      "acceptsVoucher": true,
-      "acceptsCard": false,
-      "acceptsMobile": true
-    },
-    {
       "id": "67cf3410-63c0-46aa-9f96-38296ba34afa",
       "name": "Tmi J-P Savolampi",
       "type": "sport",
@@ -100,6 +84,21 @@
       "website": "https://www.facebook.com/GolfproJP",
       "acceptsVoucher": true,
       "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
+      "id": "d3832a62-db6a-4414-aae4-0df141f7a6ad",
+      "name": "Jump.Dance.Breathe",
+      "type": "sport",
+      "categories": [
+        "Group Exercise "
+      ],
+      "address": "oulu",
+      "city": "oulu",
+      "postcode": "90110",
+      "website": "https://www.instagram.com/jump.dance.breathe/?__d=dist",
+      "acceptsVoucher": true,
+      "acceptsCard": false,
       "acceptsMobile": true
     },
     {
