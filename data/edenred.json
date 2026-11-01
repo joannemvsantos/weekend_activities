@@ -2,40 +2,36 @@
   "source": "edenred",
   "filter": "virike",
   "city": "Oulu",
-  "fetchedAt": "2026-10-01T12:10:08Z",
+  "fetchedAt": "2026-11-01T12:26:30Z",
   "merchants": [
     {
-      "id": "6354d00d-c318-414c-ae20-54085452bd8c",
-      "name": "Mankeli Training Club",
+      "id": "d3832a62-db6a-4414-aae4-0df141f7a6ad",
+      "name": "Jump.Dance.Breathe",
       "type": "sport",
       "categories": [
-        "Gym",
-        "Group Exercise ",
-        "Boxing",
-        "Personal Training",
-        "Crossfit"
+        "Group Exercise "
       ],
-      "address": "Onkkaalantie 69",
-      "city": "Pälkäne",
-      "postcode": "36600",
-      "website": "https://mankelitraining.fi/",
+      "address": "oulu",
+      "city": "oulu",
+      "postcode": "90110",
+      "website": "https://www.instagram.com/jump.dance.breathe/?__d=dist",
       "acceptsVoucher": true,
-      "acceptsCard": true,
+      "acceptsCard": false,
       "acceptsMobile": true
     },
     {
-      "id": "fcd8ee69-73f6-4b11-b142-9a1ba8003f3f",
-      "name": "Rakkaudella Kaisa",
-      "type": "culture",
+      "id": "67cf3410-63c0-46aa-9f96-38296ba34afa",
+      "name": "Tmi J-P Savolampi",
+      "type": "sport",
       "categories": [
-        "Crafting"
+        "Other"
       ],
-      "address": "Pohjoiskaari 12",
-      "city": "Helsinki",
-      "postcode": "00200",
-      "website": "",
+      "address": "Oulu",
+      "city": "Oulu",
+      "postcode": "00000",
+      "website": "https://www.facebook.com/GolfproJP",
       "acceptsVoucher": true,
-      "acceptsCard": false,
+      "acceptsCard": true,
       "acceptsMobile": true
     },
     {
@@ -67,36 +63,6 @@
       "city": "Oulu",
       "postcode": "90100",
       "website": "http://www.ovos.fi",
-      "acceptsVoucher": true,
-      "acceptsCard": false,
-      "acceptsMobile": true
-    },
-    {
-      "id": "67cf3410-63c0-46aa-9f96-38296ba34afa",
-      "name": "Tmi J-P Savolampi",
-      "type": "sport",
-      "categories": [
-        "Other"
-      ],
-      "address": "Oulu",
-      "city": "Oulu",
-      "postcode": "00000",
-      "website": "https://www.facebook.com/GolfproJP",
-      "acceptsVoucher": true,
-      "acceptsCard": true,
-      "acceptsMobile": true
-    },
-    {
-      "id": "d3832a62-db6a-4414-aae4-0df141f7a6ad",
-      "name": "Jump.Dance.Breathe",
-      "type": "sport",
-      "categories": [
-        "Group Exercise "
-      ],
-      "address": "oulu",
-      "city": "oulu",
-      "postcode": "90110",
-      "website": "https://www.instagram.com/jump.dance.breathe/?__d=dist",
       "acceptsVoucher": true,
       "acceptsCard": false,
       "acceptsMobile": true
@@ -294,6 +260,21 @@
       "acceptsMobile": true
     },
     {
+      "id": "a586e838-a907-4a3d-a12b-2d2fb8f620ef",
+      "name": "LUX Harmonia",
+      "type": "sport",
+      "categories": [
+        "Other"
+      ],
+      "address": "Kauppurienkatu 11 C 3",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.luxharmonia.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
+      "acceptsMobile": true
+    },
+    {
       "id": "0ef5e852-acb3-4851-90aa-f8a2217d2f6f",
       "name": "Hukka Xpress Rotuaari",
       "type": "sport",
@@ -414,6 +395,21 @@
       "website": "http://otcoulu.fi",
       "acceptsVoucher": true,
       "acceptsCard": false,
+      "acceptsMobile": true
+    },
+    {
+      "id": "6e07db0f-9f3a-4bcd-b014-6bc280ac5a6b",
+      "name": "Kehontuntemus",
+      "type": "sport",
+      "categories": [
+        "Other"
+      ],
+      "address": "Hallituskatu 7",
+      "city": "Oulu",
+      "postcode": "90100",
+      "website": "http://www.kehontuntemus.fi",
+      "acceptsVoucher": true,
+      "acceptsCard": true,
       "acceptsMobile": true
     }
   ]
